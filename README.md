@@ -1,7 +1,7 @@
 # CSC 413 - Project Two - The Interpreter
 
-## Student Name  : Name here
+## Student Name  : Duy Nguyen
 
-## Student ID    : ID here
+## Student ID    : 917446249
 
-## Student Email : Email here
+## Student Email : dnguyen38@mail.sfsu.edu
