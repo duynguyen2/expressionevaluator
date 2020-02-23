@@ -8,8 +8,8 @@
 *.ctxt
 
 #intlij .idea
-.idea
-.idea
+interpreter/bytecode/.idea
+interpreter/bytecode/.idea
 out/*
 
 
