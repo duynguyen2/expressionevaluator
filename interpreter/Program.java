@@ -20,11 +20,15 @@ public class Program {
      * correct addresses so the VirtualMachine knows what to set the Program Counter
      * HINT: make note what type of data-structure ByteCodes are stored in.
      */
-    public void resolveAddress() {
-
+    public void resolveAddress(Program program) {
     }
 
+    private int getSize(){
+        return this.program.size();
+    }
 
+    protected void addCode(ByteCode byteCode){
+    }
 
 
 }

@@ -1,9 +1,12 @@
 
 package interpreter;
 
+import javax.swing.text.DefaultEditorKit;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 
 public class ByteCodeLoader extends Object {
@@ -28,6 +31,6 @@ public class ByteCodeLoader extends Object {
      *      the newly created ByteCode instance via the init function.
      */
     public Program loadCodes() {
-       return null;
     }
+
 }
