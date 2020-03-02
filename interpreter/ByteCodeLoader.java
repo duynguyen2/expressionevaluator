@@ -1,10 +1,13 @@
 
 package interpreter;
 
+import interpreter.bytecode.ByteCode;
+
 import javax.swing.text.DefaultEditorKit;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
@@ -31,6 +34,27 @@ public class ByteCodeLoader extends Object {
      *      the newly created ByteCode instance via the init function.
      */
     public Program loadCodes() {
+        String line;
+        Program program= new Program();
+        try{
+            while((line = byteSource.readLine()) != null){
+                StringTokenizer tokenizer = new StringTokenizer(line);
+                String byteCodeName = tokenizer.nextToken(" "), byteCodeClassName = CodeTable.getClassName(byteCodeName);
+                Class c = Class.forName("interpreter.bytecode." + byteCodeClassName);
+                ByteCode byteCode = (ByteCode) c.getDeclaredConstructor().newInstance();
+                ArrayList<String> args = new ArrayList<>();
+                while(tokenizer.hasMoreTokens())
+                    args.add(tokenizer.nextToken());
+
+                byteCode.init(args);
+                program.addCode(byteCode);
+            }
+        }
+        catch(Exception x){
+        }
+
+        program.resolveAddress(program);
+        return program;
     }
 
 }

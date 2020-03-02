@@ -16,16 +16,34 @@ public class RunTimeStack {
         framePointer.add(0);
     }
 
-    public void dump(VirtualMachine virtualMachine){
-        System.out.println(virtualMachine);
+    public void dump(){
+        String str = "";
+        for(int i = 0; i < framePointer.size(); i++){
+            str = "[";
+            if(i == framePointer.size() - 1)
+                for(int j = framePointer.peek(); j < runTimeStack.size(); j++)
+                    str += runTimeStack.get(j) + ",";
+
+            else{
+                int index = framePointer.get(i + 1);
+                for(int k = framePointer.get(i); k < framePointer.get(i) + index; k++)
+                    str += runTimeStack.get(k) + ",";
+
+            }
+
+            if(str.charAt(str.length() - 1) == ',')
+                str = str.substring(0, str.length() - 1);
+
+            str += "]";
+        }
+        System.out.println(str);
     }
 
     public int peek(){
-        if(runTimeStack.isEmpty()){
-            System.out.println("PEEK: Empty");
+        if(runTimeStack.isEmpty())
             return 0;
-        }
-        return runTimeStack.get(runTimeStack.size() - 1);
+        else
+            return runTimeStack.get(runTimeStack.size() - 1);
     }
 
     public int push(int i){
@@ -34,48 +52,33 @@ public class RunTimeStack {
     }
 
     public int pop(){
-        if(runTimeStack.size() == 0){
-            System.out.println("Empty runtimestack");
-            System.exit(-2);
-        }
+        if(runTimeStack.size() == 0)
+            System.exit(-1);
+
         return runTimeStack.remove(runTimeStack.size() - 1);
     }
 
     public int store(int offset){
-        if(runTimeStack.isEmpty()){
-            System.out.println("Empty runtimestack");
-            System.exit(-4);
-        }
-        int n = this.pop();
-        runTimeStack.add(framePointer.peek() - offset, n);
-        return n;
+        int value = runTimeStack.get(runTimeStack.size() - 1);
+        runTimeStack.remove(runTimeStack.size() - 1);
+        runTimeStack.set(framePointer.peek() + offset, value);
+        return value;
     }
 
     public int load(int offset){
-        if(runTimeStack.isEmpty()){
-            System.out.println("Empty runtimestack");
-        }
-        int n = runTimeStack.get(framePointer.peek() - offset);
-        this.push(n);
-        return n;
+        int value = runTimeStack.get(framePointer.peek() + offset);
+        runTimeStack.add(value);
+        return value;
     }
 
-    public int newFrameAt(int offset){
-        int n = runTimeStack.get(framePointer.peek() - offset);
-        framePointer.push(n);
-        return n;
-    }
+    public void newFrameAt(int offset){ framePointer.push(runTimeStack.size() - offset); }
 
     public void popFrame(){
-        int value = this.peek();
-        int fp = framePointer.pop();
-        while(runTimeStack.size() >= fp){
-            if(runTimeStack.isEmpty()){
-                System.out.println("Empty runtimestack");
-                System.exit(-3);
-            }
-            this.pop();
+        int n = runTimeStack.get(runTimeStack.size() - 1);
+        while(runTimeStack.size() != framePointer.peek()) {
+            runTimeStack.remove(runTimeStack.size() - 1 );
         }
-        this.push(value);
+        framePointer.pop();
+        runTimeStack.add(n);
     }
 }
