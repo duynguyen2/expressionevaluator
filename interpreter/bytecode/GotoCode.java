@@ -18,6 +18,7 @@ public class GotoCode extends ByteCode{
         virtualMachine.setProgramCounter(destinationAddress - 1);
     }
 
+    @Override
     public String toString() {
         return "GOTO " + arguments.get(0);
     }

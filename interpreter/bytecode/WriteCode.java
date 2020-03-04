@@ -17,6 +17,7 @@ public class WriteCode extends ByteCode{
         System.out.println(virtualMachine.peekRunTimeStack());
     }
 
+    @Override
     public String toString() {
         return "WRITE";
     }

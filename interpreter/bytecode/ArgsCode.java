@@ -18,7 +18,8 @@ public class ArgsCode extends ByteCode {
         virtualMachine.newFrameAt(Integer.parseInt(this.arguments.get(0)));
     }
 
+    @Override
     public String toString() {
-        return "\n" + "ARGS " + Integer.parseInt(this.arguments.get(0));
+        return "ARGS " + Integer.parseInt(this.arguments.get(0));
     }
 }

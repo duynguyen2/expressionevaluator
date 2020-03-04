@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class DumpCode extends ByteCode {
     private ArrayList<String> arguments;
+    boolean dumpChange;
 
     @Override
     public void init(ArrayList<String> args){
@@ -16,9 +17,13 @@ public class DumpCode extends ByteCode {
     @Override
     public void execute(VirtualMachine virtualMachine){
         if(arguments.get(0).equals("ON"))
-            virtualMachine.dump_on();
+            dumpChange = true;
+            //virtualMachine.dump_on();
         else
-            virtualMachine.dump_off();
+            dumpChange = false;
+            //virtualMachine.dump_off();
+
+        virtualMachine.getRunTimeStack().dump();
     }
 
     public String toString() {

@@ -17,6 +17,7 @@ public class LoadCode extends ByteCode{
         virtualMachine.load(Integer.parseInt(arguments.get(0)));
     }
 
+    @Override
     public String toString() {
         String str = "LOAD " + this.arguments.get(0);
         if (this.arguments.size() == 2)

@@ -25,6 +25,7 @@ public class ReadCode extends ByteCode{
         virtualMachine.pushRunTimeStack(val);
     }
 
+    @Override
     public String toString() {
         return "READ";
     }

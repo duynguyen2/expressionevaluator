@@ -17,11 +17,9 @@ public class HaltCode extends ByteCode{
         virtualMachine.halt();
     }
 
+    @Override
     public String toString() {
         return "HALT";
     }
 
-    public ArrayList<String> getArgs(){
-        return this.arguments;
-    }
 }

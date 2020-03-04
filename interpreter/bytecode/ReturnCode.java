@@ -19,6 +19,7 @@ public class ReturnCode extends ByteCode{
         virtualMachine.setProgramCounter(returnAddress);
     }
 
+    @Override
     public String toString() {
         String str = "RETURN ";
 

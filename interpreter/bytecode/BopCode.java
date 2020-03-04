@@ -94,4 +94,9 @@ public class BopCode extends ByteCode{
         }
     }
 
+    @Override
+    public String toString(){
+        return "BOP " + this.arguments.get(0);
+    }
+
 }

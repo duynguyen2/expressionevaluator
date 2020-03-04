@@ -17,6 +17,7 @@ public class StoreCode extends ByteCode{
         virtualMachine.store(Integer.parseInt(this.arguments.get(0)));
     }
 
+    @Override
     public String toString() {
         String str = "STORE " + this.arguments.get(0);
         if (this.arguments.size() == 2)

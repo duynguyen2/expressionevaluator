@@ -35,16 +35,16 @@ public class Program {
         for(int i = 0; i < this.program.size(); i++){
             ByteCode byteCode = this.program.get(i);
             if(byteCode instanceof FalseBranchCode){
-                int val = label.get(((FalseBranchCode) byteCode).getArgs().get(0));
-                ((FalseBranchCode) byteCode).setDestinationAddress(val);
+                int value = label.get(((FalseBranchCode) byteCode).getArgs().get(0));
+                ((FalseBranchCode) byteCode).setDestinationAddress(value);
             }
             else if (byteCode instanceof GotoCode) {
-            int val = label.get(((GotoCode) byteCode).getArgs().get(0));
-            ((GotoCode) byteCode).setDestinationAddress(val);
+            int value = label.get(((GotoCode) byteCode).getArgs().get(0));
+            ((GotoCode) byteCode).setDestinationAddress(value);
             }
             else if (byteCode instanceof CallCode) {
-            int val = label.get(((CallCode) byteCode).getArgs().get(0));
-            ((CallCode) byteCode).setDestinationAddress(val);
+            int value = label.get(((CallCode) byteCode).getArgs().get(0));
+            ((CallCode) byteCode).setDestinationAddress(value);
             }
         }
     }

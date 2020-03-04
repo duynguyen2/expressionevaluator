@@ -11,7 +11,7 @@ public class VirtualMachine {
     private Program        program;
     private int            programCounter;
     private boolean        isRunning;
-    private boolean isDumping;
+    private boolean isDumping = true;
 
     protected VirtualMachine(Program program) {
         this.program = program;
@@ -27,37 +27,39 @@ public class VirtualMachine {
             code.execute(this);
             if (isDumping && !(code instanceof DumpCode)) {
                 System.out.println(code.toString());
-                runTimeStack.dump();
+                this.runTimeStack.dump();
             }
             programCounter++;
         }
     }
 
-    public void dump_off() { isDumping = false; }
+    //public void dump_off() { this.isDumping = false; }
 
-    public void dump_on() { isDumping = true; }
+    //public void dump_on() { this.isDumping = true; }
 
-    public int popRunTimeStack(){ return runTimeStack.pop(); }
+    public RunTimeStack getRunTimeStack(){ return this.runTimeStack; }
 
-    public void pushRunTimeStack(int newReturnAddress){ runTimeStack.push(newReturnAddress); }
+    public int popRunTimeStack(){ return this.runTimeStack.pop(); }
 
-    public int peekRunTimeStack(){ return runTimeStack.peek(); }
+    public void pushRunTimeStack(int newReturnAddress){ this.runTimeStack.push(newReturnAddress); }
 
-    public void popFrameStack(){ runTimeStack.popFrame(); }
+    public int peekRunTimeStack(){ return this.runTimeStack.peek(); }
 
-    public void newFrameAt(int offset){ runTimeStack.newFrameAt(offset); }
+    public void popFrameStack(){ this.runTimeStack.popFrame(); }
 
-    public void setProgramCounter(int pc){ programCounter = pc; }
+    public void newFrameAt(int offset){ this.runTimeStack.newFrameAt(offset); }
 
-    public int getProgramCounter(){ return programCounter; }
+    public void setProgramCounter(int pc){ this.programCounter = pc; }
 
-    public int popReturnAddress(){ return returnAddress.pop(); }
+    public int getProgramCounter(){ return this.programCounter; }
 
-    public void pushReturnAddress(int newReturnAddress){ returnAddress.push(newReturnAddress); }
+    public int popReturnAddress(){ return this.returnAddress.pop(); }
 
-    public int store(int offset){ return runTimeStack.store(offset); }
+    public void pushReturnAddress(int newReturnAddress){ this.returnAddress.push(newReturnAddress); }
 
-    public int load(int offset){ return runTimeStack.load(offset); }
+    public int store(int offset){ return this.runTimeStack.store(offset); }
 
-    public void halt(){ isRunning = false; }
+    public int load(int offset){ return this.runTimeStack.load(offset); }
+
+    public void halt(){ this.isRunning = false; }
 }

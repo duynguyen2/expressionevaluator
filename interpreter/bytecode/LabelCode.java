@@ -15,6 +15,7 @@ public class LabelCode extends ByteCode{
     @Override
     public void execute(VirtualMachine virtualMachine) {}
 
+    @Override
     public String toString() {
         return "LABEL " + arguments.get(0);
     }

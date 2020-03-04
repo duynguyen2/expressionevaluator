@@ -1,6 +1,7 @@
 package interpreter;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Stack;
 
 public class RunTimeStack {
@@ -17,26 +18,27 @@ public class RunTimeStack {
     }
 
     public void dump(){
-        String str = "";
-        for(int i = 0; i < framePointer.size(); i++){
-            str = "[";
-            if(i == framePointer.size() - 1)
-                for(int j = framePointer.peek(); j < runTimeStack.size(); j++)
-                    str += runTimeStack.get(j) + ",";
-
-            else{
-                int index = framePointer.get(i + 1);
-                for(int k = framePointer.get(i); k < framePointer.get(i) + index; k++)
-                    str += runTimeStack.get(k) + ",";
-
+        Iterator it = this.framePointer.iterator();
+        int nextFrame, currentFrame = (Integer) it.next();
+        for (int i = 0; i < this.framePointer.size(); i++) {
+            if (it.hasNext()) {
+                nextFrame = (Integer) it.next();
+            } else {
+                nextFrame = this.runTimeStack.size();
             }
 
-            if(str.charAt(str.length() - 1) == ',')
-                str = str.substring(0, str.length() - 1);
+            System.out.print("[");
 
-            str += "]";
+            for (int j = currentFrame; j < nextFrame; j++) {
+                System.out.print(this.runTimeStack.get(j));
+                if (j != nextFrame - 1) {
+                    System.out.print(",");
+                }
+            }
+            System.out.print("]");
+            currentFrame = nextFrame;
         }
-        System.out.println(str);
+        System.out.println();
     }
 
     public int peek(){

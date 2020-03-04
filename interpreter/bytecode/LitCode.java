@@ -18,6 +18,7 @@ public class LitCode extends ByteCode{
         virtualMachine.pushRunTimeStack(Integer.parseInt(this.arguments.get(0)));
     }
 
+    @Override
     public String toString() {
         String str = "LIT " + this.arguments.get(0);
         if (this.arguments.size() == 2) {
