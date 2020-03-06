@@ -21,7 +21,7 @@ public class LoadCode extends ByteCode{
     public String toString() {
         String str = "LOAD " + this.arguments.get(0);
         if (this.arguments.size() == 2)
-            str += (" " + this.arguments.get(1) + "   <load " + arguments.get(1) + ">");
+            str += " " + this.arguments.get(1);
 
         return str;
     }

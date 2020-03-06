@@ -6,31 +6,26 @@ import interpreter.VirtualMachine;
 import java.util.ArrayList;
 
 public class DumpCode extends ByteCode {
-    private ArrayList<String> arguments;
+    private String str;
     boolean dumpChange;
 
     @Override
     public void init(ArrayList<String> args){
-        this.arguments = args;
+        this.str = args.get(0);
     }
 
     @Override
     public void execute(VirtualMachine virtualMachine){
-        if(arguments.get(0).equals("ON"))
+        if(this.str.equals("ON"))
             dumpChange = true;
-            //virtualMachine.dump_on();
         else
             dumpChange = false;
-            //virtualMachine.dump_off();
 
         virtualMachine.getRunTimeStack().dump();
     }
 
     public String toString() {
-        return ("DUMP " + arguments.get(0));
+        return ("DUMP " + str);
     }
 
-    public ArrayList<String> getArgs() {
-        return this.arguments;
-    }
 }

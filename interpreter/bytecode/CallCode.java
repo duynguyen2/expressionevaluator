@@ -7,10 +7,12 @@ import java.util.ArrayList;
 
 public class CallCode extends ByteCode{
     private ArrayList<String> arguments;
+    private String function;
     private int destinationAddress, value;
 
     @Override
     public void init(ArrayList<String> args) {
+        this.function = args.get(0);
         this.arguments = args;
     }
 
@@ -23,19 +25,19 @@ public class CallCode extends ByteCode{
 
     @Override
     public String toString() {
-        String string = "CALL " + this.getArgs().get(0) + "     ", arg = this.arguments.get(0), append = "";
-        int baseID = arg.indexOf("<");
+        String str = "CALL ", append;
+        int baseID = this.function.indexOf("<");
         if(baseID < 0)
-            append += this.arguments.get(0);
+            append = this.function+ "\t" + this.function;
         else
-            append += this.arguments.get(0).substring(0, baseID);
+            append = this.function.substring(0, baseID) + "\t" + this.function.substring(0, baseID);
 
         if(this.value > 0)
-            string += append + "(" + this.value + ")";
+            str += append + "(" + this.value + ")";
         else
-            string += append + "()";
+            str += append + "()";
 
-        return string;
+        return str;
     }
 
     public ArrayList<String> getArgs(){

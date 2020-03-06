@@ -6,41 +6,34 @@ import java.util.ArrayList;
 
 public class ReturnCode extends ByteCode{
     private ArrayList<String> arguments;
+    private String function = "";
+    private int value;
 
     @Override
     public void init(ArrayList<String> args) {
-        this.arguments = args;
+        if(!args.isEmpty()) {
+            this.arguments = args;
+            this.function = args.get(0);
+        }
     }
 
     @Override
     public void execute(VirtualMachine virtualMachine) {
         virtualMachine.popFrameStack();
-        int returnAddress = virtualMachine.popReturnAddress();
-        virtualMachine.setProgramCounter(returnAddress);
+        this.value = virtualMachine.peekRunTimeStack();
+        virtualMachine.setProgramCounter(virtualMachine.popReturnAddress());
     }
 
     @Override
     public String toString() {
-        String str = "RETURN ";
+        String str = "RETURN ", temp = "";
+        int baseID = this.function.indexOf("<");
+        if(baseID < 0)
+            temp = this.function;
+        else
+            temp = this.function.substring(0,baseID) + "\texit " + this.function.substring(0, baseID) + ": " + this.value;
 
-        if (arguments.size() == 1) {
-            str += this.arguments.get(0) + "    exit ";
-            String arg = this.arguments.get(0);
-            int baseID = arg.indexOf("<<");
-            for (int i = 0; i < baseID; i++)
-                str += arg.charAt(i);
-
-            if (baseID == -1)
-                str += this.arguments.get(0);
-
-            str += ":";
-        }
-
-        return str;
-    }
-
-    public ArrayList<String> getArgs() {
-        return this.arguments;
+        return str + temp;
     }
 
 }

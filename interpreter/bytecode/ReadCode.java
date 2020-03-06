@@ -16,13 +16,13 @@ public class ReadCode extends ByteCode{
     @Override
     public void execute(VirtualMachine virtualMachine) {
         Scanner in= new Scanner(System.in);
-        System.out.print("Please enter an int: ");
+        System.out.print("Enter an Integer: ");
         while(!in.hasNextInt()){
-            System.out.print("Please enter an int: ");
+            System.out.print("Enter an Integer: ");
             in.next();
         }
-        int val = in.nextInt();
-        virtualMachine.pushRunTimeStack(val);
+        int value = in.nextInt();
+        virtualMachine.pushRunTimeStack(value);
     }
 
     @Override

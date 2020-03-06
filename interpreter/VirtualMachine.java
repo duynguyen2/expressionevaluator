@@ -33,10 +33,6 @@ public class VirtualMachine {
         }
     }
 
-    //public void dump_off() { this.isDumping = false; }
-
-    //public void dump_on() { this.isDumping = true; }
-
     public RunTimeStack getRunTimeStack(){ return this.runTimeStack; }
 
     public int popRunTimeStack(){ return this.runTimeStack.pop(); }

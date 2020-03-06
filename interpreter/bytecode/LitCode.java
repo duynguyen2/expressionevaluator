@@ -21,9 +21,9 @@ public class LitCode extends ByteCode{
     @Override
     public String toString() {
         String str = "LIT " + this.arguments.get(0);
-        if (this.arguments.size() == 2) {
-            str += " " + this.arguments.get(1) + "   int " + this.arguments.get(1);
-        }
+        if (this.arguments.size() == 2)
+            str += " " + this.arguments.get(1) + "\tint " + this.arguments.get(1);
+
         return str;
     }
 
