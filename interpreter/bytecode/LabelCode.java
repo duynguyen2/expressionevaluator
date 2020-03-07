@@ -20,7 +20,5 @@ public class LabelCode extends ByteCode{
         return "LABEL " + arguments.get(0);
     }
 
-    public ArrayList<String> getArgs(){
-        return this.arguments;
-    }
+    public ArrayList<String> getArgs(){ return this.arguments; }
 }

@@ -8,14 +8,10 @@ public class LoadCode extends ByteCode{
     private ArrayList<String> arguments;
 
     @Override
-    public void init(ArrayList<String> args) {
-        this.arguments = args;
-    }
+    public void init(ArrayList<String> args) { this.arguments = args; }
 
     @Override
-    public void execute(VirtualMachine virtualMachine) {
-        virtualMachine.load(Integer.parseInt(arguments.get(0)));
-    }
+    public void execute(VirtualMachine virtualMachine) { virtualMachine.load(Integer.parseInt(arguments.get(0))); }
 
     @Override
     public String toString() {

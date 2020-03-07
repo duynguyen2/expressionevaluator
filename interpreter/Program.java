@@ -39,18 +39,14 @@ public class Program {
                 ((FalseBranchCode) byteCode).setDestinationAddress(value);
             }
             else if (byteCode instanceof GotoCode) {
-            int value = label.get(((GotoCode) byteCode).getArgs().get(0));
-            ((GotoCode) byteCode).setDestinationAddress(value);
+                int value = label.get(((GotoCode) byteCode).getArgs().get(0));
+                ((GotoCode) byteCode).setDestinationAddress(value);
             }
             else if (byteCode instanceof CallCode) {
-            int value = label.get(((CallCode) byteCode).getArgs().get(0));
-            ((CallCode) byteCode).setDestinationAddress(value);
+                int value = label.get(((CallCode) byteCode).getArgs().get(0));
+                ((CallCode) byteCode).setDestinationAddress(value);
             }
         }
-    }
-
-    private int getSize(){
-        return this.program.size();
     }
 
     protected void addCode(ByteCode byteCode){ this.program.add(byteCode); }

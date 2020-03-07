@@ -14,9 +14,7 @@ public class StoreCode extends ByteCode{
     }
 
     @Override
-    public void execute(VirtualMachine virtualMachine) {
-        n = virtualMachine.store(Integer.parseInt(this.arguments.get(0)));
-    }
+    public void execute(VirtualMachine virtualMachine) { this.n = virtualMachine.store(Integer.parseInt(this.arguments.get(0))); }
 
     @Override
     public String toString() {

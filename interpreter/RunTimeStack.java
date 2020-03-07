@@ -55,7 +55,7 @@ public class RunTimeStack {
 
     public int pop(){
         if(runTimeStack.size() == 0)
-            System.exit(-1);
+            return -1;
 
         return runTimeStack.remove(runTimeStack.size() - 1);
     }
@@ -77,9 +77,9 @@ public class RunTimeStack {
 
     public void popFrame(){
         int n = runTimeStack.get(runTimeStack.size() - 1);
-        while(runTimeStack.size() != framePointer.peek()) {
+        while(runTimeStack.size() != framePointer.peek())
             runTimeStack.remove(runTimeStack.size() - 1 );
-        }
+
         framePointer.pop();
         runTimeStack.add(n);
     }

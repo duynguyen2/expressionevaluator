@@ -11,10 +11,8 @@ public class ReturnCode extends ByteCode{
 
     @Override
     public void init(ArrayList<String> args) {
-        if(!args.isEmpty()) {
-            this.arguments = args;
+        if(!args.isEmpty())
             this.function = args.get(0);
-        }
     }
 
     @Override

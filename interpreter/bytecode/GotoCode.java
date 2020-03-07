@@ -9,18 +9,14 @@ public class GotoCode extends ByteCode{
     private int destinationAddress;
 
     @Override
-    public void init(ArrayList<String> args) {
-        this.arguments = args;
-    }
+    public void init(ArrayList<String> args) { this.arguments = args; }
 
     @Override
-    public void execute(VirtualMachine virtualMachine) {
-        virtualMachine.setProgramCounter(destinationAddress - 1);
-    }
+    public void execute(VirtualMachine virtualMachine) { virtualMachine.setProgramCounter(this.destinationAddress - 1); }
 
     @Override
     public String toString() {
-        return "GOTO " + arguments.get(0);
+        return "GOTO " + this.arguments.get(0);
     }
 
     public ArrayList<String> getArgs() {

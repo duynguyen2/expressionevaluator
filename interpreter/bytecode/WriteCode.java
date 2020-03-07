@@ -8,14 +8,10 @@ public class WriteCode extends ByteCode{
     private ArrayList<String> arguments;
 
     @Override
-    public void init(ArrayList<String> args) {
-        this.arguments = args;
-    }
+    public void init(ArrayList<String> args) { this.arguments = args; }
 
     @Override
-    public void execute(VirtualMachine virtualMachine) {
-        System.out.println(virtualMachine.peekRunTimeStack());
-    }
+    public void execute(VirtualMachine virtualMachine) { System.out.println(virtualMachine.peekRunTimeStack()); }
 
     @Override
     public String toString() {

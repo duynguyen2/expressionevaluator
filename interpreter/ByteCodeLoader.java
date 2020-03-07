@@ -35,7 +35,7 @@ public class ByteCodeLoader extends Object {
      */
     public Program loadCodes() {
         String line;
-        Program program= new Program();
+        Program program = new Program();
         try{
             while((line = byteSource.readLine()) != null){
                 StringTokenizer tokenizer = new StringTokenizer(line);

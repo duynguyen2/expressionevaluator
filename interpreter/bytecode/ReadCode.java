@@ -9,9 +9,7 @@ public class ReadCode extends ByteCode{
     private ArrayList<String> arguments;
 
     @Override
-    public void init(ArrayList<String> args) {
-        this.arguments = args;
-    }
+    public void init(ArrayList<String> args) { this.arguments = args; }
 
     @Override
     public void execute(VirtualMachine virtualMachine) {
@@ -21,8 +19,7 @@ public class ReadCode extends ByteCode{
             System.out.print("Enter an Integer: ");
             in.next();
         }
-        int value = in.nextInt();
-        virtualMachine.pushRunTimeStack(value);
+        virtualMachine.pushRunTimeStack(in.nextInt());
     }
 
     @Override
