@@ -14,9 +14,9 @@ public class FalseBranchCode extends ByteCode{
 
     @Override
     public void execute(VirtualMachine virtualMachine) {
-        int bool = virtualMachine.popRunTimeStack();
-        if(bool == 0)
+        if(virtualMachine.popRunTimeStack() == 0)
             virtualMachine.setProgramCounter(this.destinationAddress - 1);
+
     }
 
     @Override
